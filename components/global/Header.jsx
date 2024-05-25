@@ -30,11 +30,14 @@ export default function Header() {
 					initial={{ x: 100, opacity: 0 }}
 					animate={{ x: 0, opacity: 1 }}
 					transition={{ duration: 0.6 }}
-					className="flex justify-center px-2 py-2 md:gap-x-4 gap-x-1"
+					className="flex justify-center px-2 py-2 md:gap-x-2 gap-x-1"
 				>
 					{isSignedIn ? (
 						<Link href="/dashboard">
-							<Button variant="default">
+							<Button
+								variant="default"
+								className="md:mx-4"
+							>
 								Dashboard
 							</Button>
 						</Link>
@@ -48,7 +51,7 @@ export default function Header() {
 					<ToggleTheme />
 					{isSignedIn && (
 						<div className="flex my-auto items-center justify-center">
-							<UserButton className="!cursor-pointer" />
+							<UserButton />
 						</div>
 					)}
 				</motion.div>

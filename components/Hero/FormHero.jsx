@@ -1,13 +1,31 @@
+'use client';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 function FormHero() {
 	return (
 		<>
-			<div className="flex flex-col w-full">
-				<div className="rounded-lg max-w-4xl mx-auto bg-secondary-foreground shadow-lg relative z-20 hidden md:block">
-					<div className="h-10 bg-secondary-foreground rounded-t-lg border-b border-muted-foreground" />
-					<div className="flex" style={{ height: 550 }}>
-						<div className="w-32 bg-gray-200 p-6 overflow-hidden rounded-bl-lg">
+			<motion.div
+				initial={{
+					scale: 0,
+					y: 700,
+					x: 0,
+					opacity: 0,
+					rotate: 180,
+				}}
+				animate={{
+					scale: 1,
+					y: 0,
+					x: 0,
+					opacity: 1,
+					rotate: 0,
+				}}
+				transition={{ duration: 1 }}
+			>
+				<div className="rounded-lg max-w-4xl mx-auto bg-secondary-foreground shadow-lg">
+					<div className="h-10 bg-secondary-foreground opacity-20 rounded-t-lg border-b border-muted-foreground" />
+					<div className="flex h-[550px]">
+						<div className="w-32 bg-gradient-to-br from-muted-foreground to-secondary-foreground p-6 overflow-hidden rounded-bl-lg">
 							<div className="text-center mb-10">
 								<div className="w-10 h-10 rounded-full bg-accent mb-4 mx-auto" />
 								<div className="h-2 rounded-full bg-accent" />
@@ -27,83 +45,83 @@ function FormHero() {
 						</div>
 						<div className="flex-1 py-6 px-8">
 							<div className="flex flex-wrap -mx-4">
-								<div className="w-2/3 px-4">
-									<div className="flex flex-wrap -mx-4 mb-10">
-										<div className="w-1/4 px-4">
-											<div className="text-center mb-10 bg-white shadow rounded-lg p-6">
-												<div className="w-10 h-10 rounded-full bg-green-600 mb-4 mx-auto" />
-												<div className="h-2 rounded-full bg-gray-200" />
+								<div className="w-2/3 px-4 sm:mx-auto">
+									<div className="flex flex-wrap -mx-4 md:mb-10 mb-1">
+										<div className="md:w-1/4 md:px-4 px-[1px]">
+											<div className="text-center mb-10 bg-gradient-to-br from-muted-foreground to-secondary-foreground shadow rounded-lg p-6">
+												<div className="h-4 w-10 md:h-10 rounded-full bg-cyan-500 mb-4 mx-auto" />
+												<div className="h-2 rounded-full bg-muted" />
 											</div>
 										</div>
-										<div className="w-1/4 px-4">
-											<div className="text-center mb-10 bg-white shadow rounded-lg p-6">
-												<div className="w-10 h-10 rounded-full bg-blue-600 mb-4 mx-auto" />
-												<div className="h-2 rounded-full bg-gray-200" />
+										<div className="md:w-1/4 md:px-4 px-[1px]">
+											<div className="text-center mb-10 bg-gradient-to-br from-muted-foreground to-secondary-foreground shadow rounded-lg p-6">
+												<div className="h-4 w-10 md:h-10 rounded-full bg-violet-600 mb-4 mx-auto" />
+												<div className="h-2 rounded-full bg-muted" />
 											</div>
 										</div>
-										<div className="w-1/4 px-4">
-											<div className="text-center mb-10 bg-white shadow rounded-lg p-6">
-												<div className="w-10 h-10 rounded-full bg-orange-400 mb-4 mx-auto" />
-												<div className="h-2 rounded-full bg-gray-200" />
+										<div className="md:w-1/4 md:px-4 px-[1px]">
+											<div className="text-center mb-10 bg-gradient-to-br from-muted-foreground to-secondary-foreground shadow rounded-lg p-6">
+												<div className="h-4 w-10 md:h-10 rounded-full bg-rose-800 mb-4 mx-auto" />
+												<div className="h-2 rounded-full bg-muted" />
 											</div>
 										</div>
-										<div className="w-1/4 px-4">
-											<div className="text-center mb-10 bg-white shadow rounded-lg p-6">
-												<div className="w-10 h-10 rounded-full bg-blue-800 mb-4 mx-auto" />
-												<div className="h-2 rounded-full bg-gray-200" />
+										<div className="md:w-1/4 md:px-4 px-[1px]">
+											<div className="text-center mb-10 bg-gradient-to-br from-muted-foreground to-secondary-foreground shadow rounded-lg p-6">
+												<div className="h-4 w-10 md:h-10 rounded-full bg-pink-500 mb-4 mx-auto" />
+												<div className="h-2 rounded-full bg-muted" />
 											</div>
 										</div>
 									</div>
-									<div className="h-32 percentage mb-10 pt-2">
-										<div className="h-4 bg-gray-200 w-64 mb-4 block" />
-										<div className="h-4 bg-gray-200 w-32 mb-4 block" />
-										<div className="h-4 bg-gray-200 w-40 mb-4 block" />
-										<div className="h-4 bg-gray-200 w-20 mb-4 block" />
+									<div className="md:h-32 percentage md:mb-10 mb-1 pt-2">
+										<div className="h-4 bg-muted w-64 mb-4 block rounded-full" />
+										<div className="h-4 bg-muted w-32 mb-4 block rounded-full" />
+										<div className="h-4 bg-muted w-40 mb-4 block rounded-full" />
+										<div className="h-4 bg-muted w-20 mb-4 block rounded-full" />
 									</div>
 									<div className="w-full flex flex-wrap mb-6">
-										<div className="w-1/2">
+										<div className="w-full md:w-1/2 ">
 											<div className="flex items-center">
-												<div className="h-8 w-8 rounded-full bg-gray-200 mr-4" />
+												<div className="h-8 w-8 rounded-full bg-muted mr-4" />
 												<div>
-													<div className="h-2 w-16 bg-gray-200 mb-1 rounded-full" />
-													<div className="h-2 w-10 bg-gray-100 rounded-full" />
+													<div className="h-2 w-16 bg-muted mb-1 rounded-full" />
+													<div className="h-2 w-10 bg-muted rounded-full" />
 												</div>
 											</div>
 										</div>
-										<div className="w-1/2">
+										<div className="w-1/2 hidden md:flex">
 											<div className="flex items-center">
-												<div className="h-8 w-8 rounded-full bg-gray-200 mr-4" />
+												<div className="h-8 w-8 rounded-full bg-muted mr-4" />
 												<div>
-													<div className="h-2 w-16 bg-gray-200 mb-1 rounded-full" />
-													<div className="h-2 w-10 bg-gray-100 rounded-full" />
+													<div className="h-2 w-16 bg-muted mb-1 rounded-full" />
+													<div className="h-2 w-10 bg-muted rounded-full" />
 												</div>
 											</div>
 										</div>
 									</div>
-									<div className="w-full flex flex-wrap">
+									<div className="w-full hidden md:flex flex-wrap ">
 										<div className="w-1/2">
 											<div className="flex items-center">
-												<div className="h-8 w-8 rounded-full bg-gray-200 mr-4" />
+												<div className="h-8 w-8 rounded-full bg-muted mr-4" />
 												<div>
-													<div className="h-2 w-16 bg-gray-200 mb-1 rounded-full" />
-													<div className="h-2 w-10 bg-gray-100 rounded-full" />
+													<div className="h-2 w-16 bg-muted mb-1 rounded-full" />
+													<div className="h-2 w-10 bg-muted rounded-full" />
 												</div>
 											</div>
 										</div>
 										<div className="w-1/2">
 											<div className="flex items-center">
-												<div className="h-8 w-8 rounded-full bg-gray-200 mr-4" />
+												<div className="h-8 w-8 rounded-full bg-muted mr-4" />
 												<div>
-													<div className="h-2 w-16 bg-gray-200 mb-1 rounded-full" />
-													<div className="h-2 w-10 bg-gray-100 rounded-full" />
+													<div className="h-2 w-16 bg-muted mb-1 rounded-full" />
+													<div className="h-2 w-10 bg-muted rounded-full" />
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div className="w-1/3 px-4">
+								<div className="w-1/3 px-4 hidden md:block">
 									<div className="rounded-lg shadow-lg p-6">
-										<div className="block w-12 h-2 rounded-full bg-gray-200 mb-6" />
+										<div className="block w-12 h-2 rounded-full bg-muted mb-6" />
 										<svg
 											height={150}
 											width={150}
@@ -131,13 +149,13 @@ function FormHero() {
 										</svg>
 										<div className="flex flex-wrap -mx-2 mb-10">
 											<div className="w-1/3 px-2">
-												<div className="block h-2 rounded-full bg-gray-200" />
+												<div className="block h-2 rounded-full bg-muted" />
 											</div>
 											<div className="w-1/3 px-2">
-												<div className="block h-2 rounded-full bg-gray-200" />
+												<div className="block h-2 rounded-full bg-muted" />
 											</div>
 											<div className="w-1/3 px-2">
-												<div className="block h-2 rounded-full bg-gray-200" />
+												<div className="block h-2 rounded-full bg-muted" />
 											</div>
 										</div>
 									</div>
@@ -153,16 +171,16 @@ function FormHero() {
 											<div className="ml-auto h-2 w-8 bg-muted-foreground rounded-full" />
 										</div>
 									</div>
-									<div className="text-right flex justify-end">
-										<div className="rounded-lg h-8 w-20 px-4 bg-gray-200 mr-2" />
+									<div className="text-right flex justify-end gap-x-4">
 										<div className="rounded-lg h-8 w-20 px-4 bg-accent" />
+										<div className="rounded-lg h-8 w-20 px-4 bg-muted" />
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 		</>
 	);
 }

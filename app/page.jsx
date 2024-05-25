@@ -5,7 +5,7 @@ import HeroForm from '@/components/Hero/FormHero';
 
 export default function Home() {
 	return (
-		<main className="flex flex-col bg-transparent max-w-screen-2xl mx-auto px-4 ">
+		<main className="flex flex-col max-w-screen-2xl h-full mx-auto gap-y-4">
 			<Hero />
 			<HeroForm />
 		</main>

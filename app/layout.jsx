@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
 				>
 					<Providers>
 						<Header />
-						<div className="pt-16">{children}</div>
+						<div className="py-16">{children}</div>
 					</Providers>
 				</body>
 			</html>

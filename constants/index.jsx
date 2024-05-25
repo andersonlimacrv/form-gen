@@ -1,29 +1,46 @@
-import { FaHome } from 'react-icons/fa';
-import {
-	TbCircleLetterR,
-	TbCircleLetterC,
-	TbCircleLetterU,
-} from 'react-icons/tb';
-
-import { BiSolidDashboard } from 'react-icons/bi';
-
+import { CgFormatLeft } from 'react-icons/cg';
+import { MdOutlineMessage } from 'react-icons/md';
+import { RiNewspaperLine } from 'react-icons/ri';
 import { VscGraph } from 'react-icons/vsc';
+import { TbTemplate } from 'react-icons/tb';
+import { GiArmorUpgrade } from 'react-icons/gi';
+import { MdOutlineShoppingCartCheckout } from 'react-icons/md';
 
-import { MdOutlineEnergySavingsLeaf } from 'react-icons/md';
-import { RiAlarmWarningFill } from 'react-icons/ri';
-import { IoAirplane } from 'react-icons/io5';
-
-const sizeIcons = 'h-8 w-8 drop-shadow-lg';
+const sizeIcons = 'h-6 w-6 drop-shadow-lg';
 
 export const SidebarData = [
 	{
 		_categoryId: 0,
-		category: 'Unidade',
+		category: 'Dashboard',
 		items: [
 			{
-				title: 'Home',
-				href: '/',
-				icon: <FaHome className={sizeIcons} />,
+				title: 'My Forms',
+				href: '/dashboard',
+				icon: <CgFormatLeft className={sizeIcons} />,
+				submenu: true,
+				submenuItems: [
+					{
+						title: 'Dashboard',
+						href: '/item1',
+					},
+				],
+			},
+			{
+				title: 'Responses',
+				href: '/dashboard/responses',
+				icon: <MdOutlineMessage className={sizeIcons} />,
+				submenu: true,
+				submenuItems: [
+					{
+						title: 'Dashboard',
+						href: '/item1',
+					},
+				],
+			},
+			{
+				title: 'Analitics',
+				href: '/dashboard/metrics',
+				icon: <VscGraph className={sizeIcons} />,
 				submenu: true,
 				submenuItems: [
 					{
@@ -36,12 +53,12 @@ export const SidebarData = [
 	},
 	{
 		_categoryId: 1,
-		category: 'Dashboard',
+		category: 'Plan',
 		items: [
 			{
-				title: 'Geral',
-				href: '/dashboard',
-				icon: <BiSolidDashboard className={sizeIcons} />,
+				title: 'Upgrade',
+				href: '/plan/upgrade',
+				icon: <GiArmorUpgrade className={sizeIcons} />,
 				submenu: true,
 				submenuItems: [
 					{
@@ -51,83 +68,31 @@ export const SidebarData = [
 				],
 			},
 			{
-				title: 'Energia',
-				href: '/monitoramento/energia',
-				icon: (
-					<MdOutlineEnergySavingsLeaf
-						className={sizeIcons}
-					/>
-				),
-				submenu: false,
-			},
-			{
-				title: 'Cargas Termicas',
-				href: '/monitoramento/cargas-termicas',
-				icon: <VscGraph className={sizeIcons} />,
+				title: 'Current',
+				href: '/plan/current',
+				icon: <RiNewspaperLine className={sizeIcons} />,
 				submenu: false,
 			},
 		],
 	},
 	{
 		_categoryId: 2,
-		category: 'Equipamentos',
+		category: 'Templates',
 		items: [
 			{
-				title: 'Unidade',
-				href: '/equipamentos/unidade',
-				icon: <TbCircleLetterU className={sizeIcons} />,
-				submenu: false,
-			},
-			{
-				title: 'Regime',
-				href: '/equipamentos/regime',
-				icon: <TbCircleLetterR className={sizeIcons} />,
-				submenu: false,
-			},
-			{
-				title: 'Compressor',
-				href: '/equipamentos/compressor',
-				icon: <TbCircleLetterC className={sizeIcons} />,
-				submenu: false,
-			},
-			{
-				title: 'Condensador',
-				href: '/equipamentos/condensador',
-				icon: <TbCircleLetterC className={sizeIcons} />,
-				submenu: false,
-			},
-		],
-	},
-	{
-		_categoryId: 3,
-		category: 'Relatorios',
-		items: [
-			{
-				title: 'Energia',
+				title: 'My Templates',
 				href: '/energia',
+				icon: <TbTemplate className={sizeIcons} />,
+				submenu: false,
+			},
+			{
+				title: 'Galery',
+				href: '/Alarmes',
 				icon: (
-					<MdOutlineEnergySavingsLeaf
+					<MdOutlineShoppingCartCheckout
 						className={sizeIcons}
 					/>
 				),
-				submenu: false,
-			},
-			{
-				title: 'Alarmes',
-				href: '/Alarmes',
-				icon: <RiAlarmWarningFill className={sizeIcons} />,
-				submenu: false,
-			},
-		],
-	},
-	{
-		_categoryId: 4,
-		category: 'Simulação',
-		items: [
-			{
-				title: 'Unidade',
-				href: '/simulacao-unidade',
-				icon: <IoAirplane className={sizeIcons} />,
 				submenu: false,
 			},
 		],

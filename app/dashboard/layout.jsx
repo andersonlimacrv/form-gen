@@ -6,7 +6,7 @@ export default function DashboardLayout({ children }) {
 	return (
 		<SignedIn>
 			<Sidebar />
-			<div className="flex flex-col max-w-screen-2xl px-40 lg:px-72 py-6">
+			<div className="flex flex-col  pl-[7.5rem] pr-[1rem] lg:pl-[16.2rem] lg:pr-[3rem] 2xl:px-[18rem] py-6">
 				{children}
 			</div>
 		</SignedIn>

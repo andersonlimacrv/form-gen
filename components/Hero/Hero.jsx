@@ -17,7 +17,7 @@ export default function Hero() {
 	const textChars = splitString(text);
 	return (
 		<>
-			<section className="flex flex-col lg:flex-row gap-y-2 gap-x-8 2xl:gap-x-32 w-full h-full py-[15%]">
+			<section className="flex flex-col lg:flex-row gap-y-2 gap-x-8 2xl:gap-x-32 w-full h-full pt-8 5xl:pt-16">
 				<div className="flex flex-col justify-center items-center w-full gap-y-4 lg:gap-y-16 px-4 lg:px-8">
 					<div className="flex flex-col justify-center text-center">
 						<motion.div
@@ -118,8 +118,15 @@ export default function Hero() {
 						y: -700,
 						x: 300,
 						opacity: 0,
+						rotate: 360,
 					}}
-					animate={{ scale: 1, y: 0, x: 0, opacity: 1 }}
+					animate={{
+						scale: 1,
+						y: 0,
+						x: 0,
+						opacity: 1,
+						rotate: 0,
+					}}
 					transition={{ duration: 1 }}
 					className="flex justify-center px-2 py-2 md:gap-x-4 gap-x-1"
 				>

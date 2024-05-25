@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 import { SidebarData } from '@/constants';
 import { usePathname } from 'next/navigation';
 import Hamburguer from '@/components/global/Hamburguer';
+import HorizontalProgress from '@/components/global/HorizontalProgress';
 
 export default function Sidebar() {
 	const pathname = usePathname();
@@ -60,10 +61,10 @@ export default function Sidebar() {
 
 	return (
 		<nav
-			className={`flex flex-col items-center h-[90vh] space-y-4 pt-4 mx-6 mt-6 bg-gradient-to-br from-primary-foreground/20 via-primary-foreground/50 to-primary-foreground fixed py-16 left-0 transition-translate rounded-lg border-border border-[1px] duration-300  ${
+			className={`flex flex-col items-center h-[90vh] space-y-4 pt-4 mx-6 mt-6 bg-gradient-to-br from-primary-foreground/20 via-primary-foreground/50 to-primary-foreground fixed left-0 transition-translate py-8 rounded-lg border-border border-[1px] duration-300  ${
 				isOpen
-					? 'w-[14rem] pb-16 overflow-y-auto overflow-x-hidden'
-					: 'w-[88px]'
+					? 'w-[14rem] overflow-y-hidden overflow-x-hidden'
+					: 'w-[80px]'
 			}`}
 			aria-label="Sidebar"
 			ref={sidebarRef}
@@ -73,14 +74,14 @@ export default function Sidebar() {
 			</div>
 			{/* Nav items */}
 			<ul
-				className={`w-full pt-5 flex flex-col  gap-y-0 lg:gap-y-1 text-sm md:text-md ${
+				className={`w-full pt-5 flex flex-col gap-y-0 lg:gap-y-1 text-sm md:text-md ${
 					isOpen ? '' : 'pr-3 mr-1'
 				}`}
 			>
 				{SidebarData.map((category) => (
 					<div key={category._categoryId}>
 						<li
-							className={`pl-4 text-[#243949] text-lg text-center font-semibold uppercase tracking-widest ${
+							className={`pl-2 dark:text-[#243949] text-[#24394955] text-lg text-center font-semibold uppercase tracking-widest ${
 								isOpen ? '' : 'hidden'
 							}`}
 						>
@@ -89,7 +90,7 @@ export default function Sidebar() {
 						{category.items.map((item, index) => (
 							<li
 								key={index}
-								className={`w-full flex items-center gap-x-1.5 group py-1 select-none text-sm lg:text-lg 2xl:text-2xl ${
+								className={`w-full flex items-center gap-x-1.5 py-1 group select-none text-sm lg:text-lg ${
 									isOpen ? 'py-0' : 'py-1'
 								}`}
 							>
@@ -112,18 +113,18 @@ export default function Sidebar() {
 								</div>
 								<Link href={item.href}>
 									<div
-										className={` group-active:scale-95 self-stretch px-3 py-1 rounded flex items-center space-x-3  dark:group-hover:text-white dark:hover:text-white ${
+										className={` group-active:scale-95 self-stretch px-3 py-2 rounded flex items-center space-x-3  dark:group-hover:text-muted-foreground dark:hover:text-muted ${
 											isOpen
-												? 'w-[12rem] dark:group-hover:bg-primary-foreground group-hover:bg-[#243949] hover:text-secondary'
+												? 'w-[12rem] dark:group-hover:bg-primary-foreground group-hover:bg-secondary-foreground hover:text-secondary'
 												: 'w-24 bg-accent/10'
 										}`}
 									>
-										<div className="text-accent/20 group-hover:text-accent ">
+										<div className="text-muted-foreground group-hover:text-accent ">
 											{item.icon}
 										</div>
 
 										<span
-											className={`capitalize pl-0 sm:pl-2 text-sm lg:text-lg  transition-all duration-200 ${
+											className={`capitalize pl-0 sm:pl-2 text-sm lg:text-[16px] font-medium transition-all duration-200 ${
 												isOpen
 													? 'inline-block translate-x-0 group-hover:translate-x-1'
 													: 'hidden'
@@ -138,6 +139,26 @@ export default function Sidebar() {
 					</div>
 				))}
 			</ul>
+			<div className="flex flex-col h-full w-full px-2">
+				<div className="flex items-end h-full w-full">
+					<HorizontalProgress value={33} variant="one" />
+				</div>
+				<div className="text-center pt-2 px-2">
+					<p className="text-muted-foreground">
+						<span className="text-accent font-bold">
+							1
+						</span>{' '}
+						/ 3
+					</p>
+				</div>
+				<h2
+					className={`text-center h-6 text-xs text-muted-foreground px-6 pt-2 ${
+						isOpen ? 'block' : 'hidden'
+					}`}
+				>
+					Upgrade your plan to unlock more features.
+				</h2>
+			</div>
 		</nav>
 	);
 }
