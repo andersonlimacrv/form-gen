@@ -27,7 +27,7 @@
       --radius: 0.5rem;
     */
     --gradient: linear-gradient(to top left,#243949,#00acac);
-    --background: 220 96% 98%;
+    --background: 220 96% 97%;
     --foreground: 219 3.4000000000000004% 0.88%;
     --card: 219 62.8% 92.2%;
     --card-foreground: 219 3.4000000000000004% 1.1%;
@@ -67,7 +67,7 @@
       --accent-foreground: 0 0% 98%;
       --destructive: 0 62.8% 30.6%;
       --destructive-foreground: 0 0% 98%;
-      --border: 0 0% 14.9%;
+      --border: 200, 34%,15%;
       --input: 0 0% 14.9%;
       --ring: 0 0% 83.1%; 
       
@@ -85,3 +85,24 @@
       @apply bg-background text-foreground;
     }
   }
+
+
+  .scroolbar::-webkit-scrollbar, body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;               /* width of the entire scrollbar */ 
+  }
+  
+  .scroolbar::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+    background: var(--glass-background);
+            /* color of the tracking area */ 
+  }
+  
+  .scroolbar::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+    background-color: var(--muted-foreground);    /* color of the scroll thumb */ 
+    border-radius: 10px;       /* roundness of the scroll thumb */ 
+    border: 1px solid var(--glass-background);  /* creates padding around scroll thumb */ 
+  }
+
+  
+
+  

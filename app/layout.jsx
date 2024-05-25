@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 import Header from '@/components/global/Header';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -16,17 +17,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<body
-				className={`${inter.className} transition-color duration-200`}
-			>
-				<Providers>
-					<Header />
-					<div className="max-w-6xl mx-auto pt-24">
-						{children}
-					</div>
-				</Providers>
-			</body>
-		</html>
+		<ClerkProvider>
+			<html lang="en" suppressHydrationWarning>
+				<body
+					className={`${inter.className} transition-color duration-200 min-h-screen`}
+				>
+					<Providers>
+						<Header />
+						<div className="pt-16">{children}</div>
+					</Providers>
+				</body>
+			</html>
+		</ClerkProvider>
 	);
 }
