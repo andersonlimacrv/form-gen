@@ -24,9 +24,9 @@ export default function FormUi({ jsonForm }) {
 	console.log('formDATA FROM: ', formData);
 
 	return (
-		<div className="p-2 lg:p-8 2xl:p-16 mx-auto lg:w-[500px] w-full h-full min-h-[600px]">
+		<div className="p-2 lg:p-8 2xl:p-16 mx-auto lg:w-[600px] 2xl:w-[800px] w-full h-full min-h-[500x]">
 			{formData ? (
-				<div className="flex flex-col gap-y-2 dark:border-white/60 border-black/60 rounded-md border p-8">
+				<div className="flex flex-col gap-y-2 dark:border-white/60 border-black/60 rounded-md border p-8 2xl:p-24">
 					<h2 className="text-center text-xl font-bold">
 						{formData.formTitle}
 					</h2>
