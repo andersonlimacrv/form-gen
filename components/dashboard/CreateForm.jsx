@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import Spinner from '../global/spinner';
 import { useRouter } from 'next/navigation';
+import { ImSpinner } from 'react-icons/im';
 
 import ButtonAccent from '@/components/global/ButtonAccent';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { AIchatSession } from '@/config/gemini';
+import { createFormPrompt } from '@/config/prompts';
 import { db } from '@/config';
 import { JsonForms } from '@/config/schema';
 import { useUser } from '@clerk/nextjs';
@@ -28,25 +29,20 @@ export default function CreateForm() {
 
 	const onCreateForm = async () => {
 		setLoading(true);
-
-		const PROMPT = `Description: ${userInput} \n On the basis of description, please give form in json format with: form title, form subheading with form having Form field, form name, placeholder name, form label, fieldType, and field required in Json format.`;
-
 		try {
-			const result = await AIchatSession.sendMessage(PROMPT);
-			if (result.response.text()) {
-				const resp = await db
-					.insert(JsonForms)
-					.values({
-						jsonForm: formResponse,
-						createBy: user?.primaryEmailAddress
-							?.emailAddress,
-						createdAt: moment().format(
-							'DD-MM-YYYY HH:mm:ss'
-						),
-					})
-					.returning({ id: JsonForms.id });
-				if (resp[0]?.id) {
-					router.push(`/customize/${resp[0]?.id}`);
+			const PROMPT = createFormPrompt({ userInput });
+			if (PROMPT) {
+				const result = await AIchatSession.sendMessage(PROMPT);
+				const responseText = result.response.text();
+
+				if (responseText) {
+					const respID = await insertDB({
+						jsonTxt: responseText,
+					});
+
+					if (respID) {
+						router.push(`/customize/${respID}`);
+					}
 				}
 			}
 		} catch (error) {
@@ -54,6 +50,18 @@ export default function CreateForm() {
 		} finally {
 			setLoading(false);
 		}
+	};
+
+	const insertDB = async ({ jsonTxt }) => {
+		const resp = await db
+			.insert(JsonForms)
+			.values({
+				jsonForm: jsonTxt,
+				createBy: user?.primaryEmailAddress?.emailAddress,
+				createdAt: moment().format('DD-MM-YYYY HH:mm:ss'),
+			})
+			.returning({ id: JsonForms.id });
+		return resp[0]?.id;
 	};
 	return (
 		<>
@@ -73,7 +81,7 @@ export default function CreateForm() {
 						onChange={(e) =>
 							setUserInput(e.target.value)
 						}
-						placeholder="Enter your form name"
+						placeholder="Enter a description for your form..."
 						className="w-full"
 					/>
 					<br />
@@ -83,7 +91,11 @@ export default function CreateForm() {
 							onClick={() => onCreateForm()}
 							className="w-full"
 						>
-							{loading ? <Spinner /> : 'Create'}
+							{loading ? (
+								<ImSpinner className="animate-spin text-accent" />
+							) : (
+								'Create'
+							)}
 						</Button>
 					</div>
 				</DialogContent>
